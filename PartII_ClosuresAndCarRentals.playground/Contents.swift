@@ -26,8 +26,9 @@ struct RentalCar {
 
 // This is the function you are implementing for Part II A.
 func price(rentalCar: RentalCar, totalHours: Int) -> Float {
-    let days = 0  // this you need to compute from totalHours
-    let hours = 0 // you also need to compute this from totalHours
+    
+    let days = Float(totalHours/24)  // this you need to compute from totalHours
+    let hours = Float(totalHours % 24) // you also need to compute this from totalHours
     let dailyPrice = rentalCar.dailyPrice
     let hourlyPrice = rentalCar.hourlyPrice
     return days * dailyPrice + hours * hourlyPrice // this return statement isn't quite right yet!
@@ -36,7 +37,7 @@ func price(rentalCar: RentalCar, totalHours: Int) -> Float {
 // This is the function you are implementing for Part II B.
 func pricingFunctionForCar(rentalCar: RentalCar) -> (Int) -> (Float) {
     func priceForHours(totalHours: Int) -> Float {
-        return 0.0 // with what you did in Part II A, fixing this return to return the right thing is easy
+        return price(rentalCar, totalHours: totalHours) // with what you did in Part II A, fixing this return to return the right thing is easy
     }
     return priceForHours // this is a function that is being returned!!
 }
